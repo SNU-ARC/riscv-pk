@@ -10,7 +10,8 @@ volatile uint8_t* uart16550;
 // some devices require a shifted register index
 // (e.g. 32 bit registers instead of 8 bit registers)
 static uint32_t uart16550_reg_shift;
-static uint32_t uart16550_clock = 1843200;   // a "common" base clock
+static uint32_t uart16550_clock = 80*1000*1000u;   // SJ: hard-coded freq
+// static uint32_t uart16550_clock = 1843200;   // a "common" base clock
 
 #define UART_REG_QUEUE     0    // rx/tx fifo data
 #define UART_REG_DLL       0    // divisor latch (LSB)
@@ -25,7 +26,8 @@ static uint32_t uart16550_clock = 1843200;   // a "common" base clock
 #define UART_REG_STATUS_RX 0x01
 #define UART_REG_STATUS_TX 0x20
 
-#define UART_DEFAULT_BAUD  38400
+#define UART_DEFAULT_BAUD  115200 // SJ: hard-coded baud
+//#define UART_DEFAULT_BAUD  38400
 
 void uart16550_putchar(uint8_t ch)
 {
