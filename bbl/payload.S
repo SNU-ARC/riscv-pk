@@ -3,6 +3,11 @@
 #include "config.h"
 #include "encoding.h"
 
+  .section ".temporary_dtb", "a"
+  .globl _temporary_dtb
+ _temporary_dtb:
+  .incbin TEMPORARY_DTB
+
   .section ".payload","a",@progbits
 
 #if RELAXED_ALIGNMENT

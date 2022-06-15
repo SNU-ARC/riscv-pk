@@ -1,5 +1,7 @@
 // See LICENSE for license details.
 
+#define TEMPORARY_DTB_ADDRESS 0x80016000
+
 #include "mtrap.h"
 #include "bits.h"
 #include "config.h"
@@ -233,6 +235,11 @@ do_reset:
 // save a0 and a1; arguments from previous boot loader stage:
 //  li x10, 0
 //  li x11, 0
+
+#ifdef TEMPORARY_DTB_ADDRESS
+  li x11, TEMPORARY_DTB_ADDRESS
+#endif
+
   li x12, 0
   li x13, 0
   li x14, 0

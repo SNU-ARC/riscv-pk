@@ -99,6 +99,12 @@ SECTIONS
   . = ALIGN(0x1000);
   _end = .;
 
+  . = 0x80016000;
+  .temporary_dtb :
+  {
+    *(.temporay_dtb)
+  }
+
   .payload :
   {
     *(.payload)
